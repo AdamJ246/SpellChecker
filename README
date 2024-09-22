@@ -1,0 +1,32 @@
+Purpose:
+	to analyze a given text file's words and check if they can be found in a given dictionary before deciding what
+	to do with the word.
+This program inputs:
+	Text file: a specified file in the command line for the program to open a stream to.
+	A: Adds an identified word to the dict.txt file (by appending) and respective Hash table.
+	I: Ignores an identified word and flags it to be passed over if noticed once more in the SAME text file.
+	G: Proceeds onto the next word without doing anything to or with the identified word.
+	S: Suggests a word of similar spelling if only a minor spelling error occurs (anything more advanced may be missed).
+	Q: Quits the program at any point and the program will not say "reached end of text file"
+This program outputs:
+	The program will display misspelled words within a given text file and will display a message acting in response to the
+	user input unique to the input scenario. If the suggestion scenario occurrs, the user will be notified of the first
+	similarly spelled word found in the dictionary; otherwise, the user will recieve a message explaining how there are no
+	similar words in the dictionary.
+	Other program specific outputs include writing to the dictionary.
+This program uses/includes:
+iostream, string, fstream, cctype, sstream, vector, "HashTable.h", "BinarySearchTree.h"
+	where HashTable.h and BinarySearchTree.h are files found locally and are necessary to produce the Hash tables and
+	traverse them, as well as create the BST necessary to collect the misspelled words.
+Outline:
+	The code uses a few file streams in to acquire the command line text file and dictionary words. The dictionary words are
+	hashed into a single table (given a large redundency for the approximate 500 words and another 500 space for dictionary
+	additions). The code getsline(first so that a line counter can be incremented) and gets the words in those lines individually.
+	While processing the words one by one, they are set to lower case and removed of unwated characters. If a word that is not
+	found in the dictionary is discovered, a function will prompt the user with five possible inputs to decide what to do with
+	the word. A list of inputs include: 'A' for adding to the dictionary, 'I' for ignoring a word for the rest of the run, 'G' for
+	moving onto the next word, 'S' for suggesting a word, and 'Q' for quitting the program.	One particular input is the S for 
+	suggesions which will perform its own function of switchting the characters around in the word to account for misspelling 
+	and suggests words in the dictionary if a comparison is made; otherwise, it will say there is no comparable word.
+	The code uses only one output file stream to append words to the dictionary.
+	The program will run until there are no more words to analyze in the text file.
